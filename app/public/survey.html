@@ -76,7 +76,7 @@ Survey Quesstions
 
 </div>	
 <select class="form-control">
-   <option>0</option>
+  <option>0</option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -91,7 +91,7 @@ Survey Quesstions
 
 </div>	
 <select class="form-control">
-   <option>0</option>
+  <option>0</option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -106,7 +106,7 @@ Survey Quesstions
 
 </div>	
 <select class="form-control">
-   <option>0</option>
+  <option>0</option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -137,7 +137,7 @@ Survey Quesstions
 
 </div>	
 <select class="form-control">
-   <option>0</option>
+  <option>0</option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -153,7 +153,7 @@ Survey Quesstions
 
 </div>	
 <select class="form-control">
-    <option>0</option>
+  <option>0</option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -168,7 +168,7 @@ Survey Quesstions
 
 </div>	
 <select class="form-control">
- <option>0</option>
+  <option>0</option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -184,7 +184,7 @@ Survey Quesstions
 
 </div>	
 <select class="form-control">
-   <option>0</option>
+  <option>0</option>
   <option>1</option>
   <option>2</option>
   <option>3</option>
@@ -196,7 +196,6 @@ Survey Quesstions
 <br>
 <button type="submit" class="btn btn-primary submit">Submit</button>
 
-
   	</div>
   </div>
   
@@ -205,17 +204,19 @@ Survey Quesstions
    <div class="modal-dialog">
    
      <!-- Modal content-->
+
      <div class="modal-content">
        <div class="modal-header">
          <button type="button" class="close" data-dismiss="modal">&times;</button>
-         <h4 class="modal-title"> -- FRIEND FINDER -- </h4>
+         <h4 class="modal-title"> -- We found a friend for You! -- </h4>
        </div>
-       <div class="modal-body">
+       <!-- <div class="modal-body">
          <p id="modalId">Error - enter some data.</p>
-       </div>
-       <div class="modal-footer">
+       </div> -->
+       <!-- <div class="modal-footer">
+
          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       </div>
+       </div> -->
      </div>
      
    </div>
@@ -224,16 +225,49 @@ Survey Quesstions
 
 
 </body>
+
+
+
 <!-- BELOW CODE IS CRITICAL. IT HANDLES HOW FORM DATA IS LOADED FROM OUR SERVER -->
 <script type="text/javascript">
 	
 
-$('#modalId').html(msg);
-$('#myModal').modal('show');
+$("#modalId").html(msg);
+$("#myModal").modal(show);
+
+$(".submit").on("click", function(event) {
+  event.preventDefault();
+
+// Here we grab the form elements
+      var newFriend = {
+        friendName: $("#friend-name").val().trim(),
+        friendPic: $("#friend-pic"),
+        
+
+        };
+
+      console.log(newFriend);
 
 
+     $.post("/api/friend.js", newFriend,
+        function(data) {
 
+          // If a match is available... tell user they have a match.
+          if (data) {
+            alert("Yay! You found a friend!");
+          }
 
+          // If a table is available... tell user they on the waiting list.
+          else {
+            alert("Sorry you are alone!");
+          }
+
+          // Clear the form when submitting
+          $("#friend-name").val("");
+
+        });
+
+    });
 
 
 </script>

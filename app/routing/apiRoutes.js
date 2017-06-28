@@ -4,7 +4,7 @@
 // This data source hold arrays of information on friend-data, waitinglist, etc.
 // ===============================================================================
 
-var friendArray = require("../data/friendArray");
+var friendArray = require("../data/friend.js");
 
 
 // ===============================================================================
@@ -18,7 +18,7 @@ module.exports = function(app) {
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the friend)
   // ---------------------------------------------------------------------------
 
-  app.get("/api/friend", function(req, res) {
+  app.get("/api/friend.js", function(req, res) {
     res.json(friendArray);
 
     console.log(result);
@@ -33,7 +33,7 @@ module.exports = function(app) {
   // Then the server saves the data to the friend array)
   // ---------------------------------------------------------------------------
 
-  app.post("/api/friend", function(req, res) {
+  app.post("/api/friend.js", function(req, res) {
     // Note the code here. Our "server" will respond to requests and let users know if they have a friend or not.
     // It will do this by sending out the value "true" have a friend
 
